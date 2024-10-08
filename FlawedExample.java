@@ -7,7 +7,7 @@ public class FlawedExample {
         return Integer.toHexString(numInt);
     }
 
-    public void testBitCount () {
+    public void testFlawedExample () {
         BigInteger number = new BigInteger("1180590145325084590940239490622584768749437722435980772180699");
 
         String hexNum = findBitCount(number);
@@ -21,17 +21,20 @@ public class FlawedExample {
         String hexq = findBitCount(q);
         System.out.println("Number of bits for Q = " + hexq);
 
+        BigInteger e = new BigInteger("65537");
+        BigInteger z = p.subtract(new BigInteger("1")).multiply(q.subtract(new BigInteger("1")));
+        BigInteger d = e.modInverse(z);
+        String hex_d = d.toString(16);
+        System.out.println("d = " + hex_d);
 
 
     }
+
     public static void main (String[] args) {
 		FlawedExample testObj = new FlawedExample ();
 
 		System.out.println ("********** Project 2 output begins ********** ");
 
-		testObj.testBitCount ();
-		//testObj.testXgcd ();
-	    //testObj.testKeygen ();
-		//testObj.testRSA ();
+		testObj.testFlawedExample ();
 	}
 }
