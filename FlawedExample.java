@@ -21,6 +21,7 @@ public class FlawedExample {
         System.out.println("Number of bits for Q = " + hexq);
 
         BigInteger e = new BigInteger("65537");
+        // z = (p - 1) * (q-1)
         BigInteger z = p.subtract(new BigInteger("1")).multiply(q.subtract(new BigInteger("1")));
         BigInteger d = e.modInverse(z);
         String hex_d = d.toString(16);
@@ -28,10 +29,12 @@ public class FlawedExample {
         System.out.println("Number for Q = " + q);
         
         BigInteger m = new BigInteger("3");
-        //Cypher Text = C
+        // Cypher Text = C
+        // c = m^e mod N
         BigInteger c = m.modPow(e, number);
         System.out.println("Cypher Text c = " + c);
 
+        // decrypt by solving m' = c^d mod N
         BigInteger decryptedM = c.modPow(d, number);
         System.out.println("Decrypted Message(3) = " + decryptedM);
 
