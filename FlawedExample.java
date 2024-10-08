@@ -3,14 +3,13 @@ import java.math.BigInteger;
 public class FlawedExample {
 
     public int findBitCount (BigInteger num) {
-        int count = 0;
-        
-        return count;
+        return num.bitLength();
     }
 
     public void testBitCount () {
         BigInteger number = new BigInteger("1180590145325084590940239490622584768749437722435980772180699");
 
+        System.out.println("The number of bits in 1180590145325084590940239490622584768749437722435980772180699 is:" + findBitCount(number));
 
 
     }
