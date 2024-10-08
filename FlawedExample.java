@@ -14,8 +14,7 @@ public class FlawedExample {
         System.out.println("Number of bits for N = " + hexNum);
 
         BigInteger p = new BigInteger("967148115841218361396434822121");
-        String hexp = findBitCount(p);
-        System.out.println("Number of bits for P = " + hexp);
+        System.out.println("Number for P = " + p);
 
         BigInteger q = new BigInteger("1220692183532008344492309072419");
         String hexq = findBitCount(q);
@@ -26,6 +25,15 @@ public class FlawedExample {
         BigInteger d = e.modInverse(z);
         String hex_d = d.toString(16);
         System.out.println("d = " + hex_d);
+        System.out.println("Number for Q = " + q);
+        
+        BigInteger m = new BigInteger("3");
+        //Cypher Text = C
+        BigInteger c = m.modPow(e, number);
+        System.out.println("Cypher Text c = " + c);
+
+
+        
 
 
     }
