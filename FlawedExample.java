@@ -32,6 +32,10 @@ public class FlawedExample {
         BigInteger c = m.modPow(e, number);
         System.out.println("Cypher Text c = " + c);
 
+        BigInteger decryptedM = c.modPow(d, number);
+        System.out.println("Decrypted Message(3) = " + decryptedM);
+
+
 
         
 
