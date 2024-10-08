@@ -24,7 +24,23 @@ public class RealWorldExample {
         System.out.println("Number of bits for P: "+ numBitsP);
         int numBitsQ = findBitCount(Q);
         System.out.println("Number of bits for Q: "+ numBitsQ);
+        System.out.println();
 
+
+        BigInteger z = P.subtract(new BigInteger("1")).multiply(Q.subtract(new BigInteger("1")));
+        BigInteger d = E.modInverse(z);
+        String hex_d = d.toString(16);
+        System.out.println("Bob's private key (d) = 0x" + hex_d);
+        System.out.println();
+
+        // To perform plain RSA ecryption, alice will compute a ciphertext using c = m^e mod N
+        BigInteger m = new BigInteger("3");
+        // Cypher Text = C
+        // c = m^e mod N
+        BigInteger c = m.modPow(E, N);
+        String c_hex = c.toString(16);
+        System.out.println("Cypher Text c = 0x" + c_hex);
+        System.out.println();
 
     }
 
@@ -32,6 +48,7 @@ public class RealWorldExample {
 		RealWorldExample testObj = new RealWorldExample();
 
 		System.out.println ("********** Project 2 output begins ********** ");
+        System.out.println();
 
         testObj.RealWorldTest();
 	}
