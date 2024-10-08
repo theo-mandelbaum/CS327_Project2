@@ -33,7 +33,7 @@ public class RealWorldExample {
         System.out.println("Bob's private key (d) = 0x" + hex_d);
         System.out.println();
 
-        // To perform plain RSA ecryption, alice will compute a ciphertext using c = m^e mod N
+        // To perform plain RSA ecryption, Alice will compute a ciphertext using c = m^e mod N
         BigInteger m = new BigInteger("3");
         // Cypher Text = C
         // c = m^e mod N
@@ -42,6 +42,12 @@ public class RealWorldExample {
         System.out.println("Cypher Text c = 0x" + c_hex);
         System.out.println();
 
+        // In order for Bob to decrypt the ciphertext from above, he must compute m' = c^d mod N
+        BigInteger decryptedM = c.modPow(d, N);
+        String decryptedM_hex = decryptedM.toString(16);
+        // When the message (m = 3) is decrypted, the result is printed
+        System.out.println("Decrypted Message(3) = 0x" + decryptedM_hex);
+        System.out.println();
     }
 
     public static void main (String[] args) {
