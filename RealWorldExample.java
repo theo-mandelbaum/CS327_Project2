@@ -43,7 +43,17 @@ public class RealWorldExample {
         System.out.println();
 
         // In order for Bob to decrypt the ciphertext from above, he must compute m' = c^d mod N
-        BigInteger decryptedM = c.modPow(d, N);
+        BigInteger decryptedM = new BigInteger("0");
+        long begin = System.currentTimeMillis()/1000;
+        for(int i = 0; i <1000 ; i++){
+            decryptedM = c.modPow(d, N);
+        }
+        long end = System.currentTimeMillis()/1000;
+
+        BigInteger timeSec = BigInteger.valueOf((end-begin));
+        BigInteger avg = BigInteger.valueOf(findBitCount(N)).divide(timeSec);
+        System.out.println("Average Time: " + avg);
+
         String decryptedM_hex = decryptedM.toString(16);
         // When the message (m = 3) is decrypted, the result is printed
         System.out.println("Decrypted Message(3) = 0x" + decryptedM_hex);
