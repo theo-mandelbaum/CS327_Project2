@@ -2,28 +2,27 @@ import java.math.BigInteger;
 
 public class FlawedExample {
 
-    public String findBitCount (BigInteger num) {
-        int numInt = num.bitLength();
-        return Integer.toHexString(numInt);
+    public int findBitCount (BigInteger num) {
+        return num.bitLength();
     }
 
     public void testFlawedExample () {
         BigInteger number = new BigInteger("1180590145325084590940239490622584768749437722435980772180699");
 
-        String hexNum = findBitCount(number);
-        System.out.println("Number of bits for N = 0x" + hexNum);
+        int hexNum = findBitCount(number);
+        System.out.println("Number of bits for N = " + hexNum);
 
         BigInteger p = new BigInteger("967148115841218361396434822121");
         String p_hex = p.toString(16);
-        String bits_p = findBitCount(p);
+        int bits_p = findBitCount(p);
         System.out.println("P = 0x" + p_hex);
-        System.out.println("Number of bits for P = 0x" + bits_p);
+        System.out.println("Number of bits for P = " + bits_p);
 
         BigInteger q = new BigInteger("1220692183532008344492309072419");
         String q_hex = q.toString(16);
-        String bits_q = findBitCount(q);
+        int bits_q = findBitCount(q);
         System.out.println("Q = 0x" + q_hex);
-        System.out.println("Number of bits for Q = 0x" + bits_q);
+        System.out.println("Number of bits for Q = " + bits_q);
 
         BigInteger e = new BigInteger("65537");
         // z = (p - 1) * (q-1)

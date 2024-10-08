@@ -2,9 +2,8 @@ import java.math.BigInteger;
 
 public class RealWorldExample {
     
-    public String findBitCount (BigInteger num) {
-        int numInt = num.bitLength();
-        return Integer.toHexString(numInt);
+    public int findBitCount (BigInteger num) {
+        return num.bitLength();
     }
 
     public void RealWorldTest(){
@@ -13,17 +12,17 @@ public class RealWorldExample {
         
         BigInteger E = ((new BigInteger("2").pow(16)).add(new BigInteger("1")));
         BigInteger N = P.multiply(Q);
-        System.out.println("Bob's Public Key is (N,E)");
-        System.out.println("N: "+ N.toString(16));
-        System.out.println("E: "+ E.toString(16));
+        System.out.println("Bob's Public Key is (" + N + ", " + E + ")");
+        /*System.out.println("N: "+ N.toString(16));
+        System.out.println("E: "+ E.toString(16));*/
 
         System.out.println();
         
-        String numBitsN = findBitCount(N);
+        int numBitsN = findBitCount(N);
         System.out.println("Number of bits for N: "+ numBitsN);
-        String numBitsP = findBitCount(P);
+        int numBitsP = findBitCount(P);
         System.out.println("Number of bits for P: "+ numBitsP);
-        String numBitsQ = findBitCount(Q);
+        int numBitsQ = findBitCount(Q);
         System.out.println("Number of bits for Q: "+ numBitsQ);
 
 
