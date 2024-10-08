@@ -17,7 +17,7 @@ public class FlawedExample {
         String p_hex = p.toString(16);
         String bits_p = findBitCount(p);
         System.out.println("P = " + p_hex);
-        System.out.println("Number of bits for P = " + bits_p);
+        System.out.println("Number for bits P = " + bits_p);
 
         BigInteger q = new BigInteger("1220692183532008344492309072419");
         String q_hex = q.toString(16);
@@ -44,10 +44,6 @@ public class FlawedExample {
         String decryptedM_hex = decryptedM.toString(16);
         // When the message (m = 3) is decrypted, the result is printed
         System.out.println("Decrypted Message(3) = " + decryptedM_hex);
-
-
-
-        
 
 
     }
