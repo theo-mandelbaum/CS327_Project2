@@ -44,20 +44,29 @@ public class RealWorldExample {
 
         // In order for Bob to decrypt the ciphertext from above, he must compute m' = c^d mod N
         BigInteger decryptedM = new BigInteger("0");
-        long begin = System.currentTimeMillis()/1000;
-        for(int i = 0; i <1000 ; i++){
+        long begin = System.currentTimeMillis();
+        for(int i = 0; i < 1000; i++) {
             decryptedM = c.modPow(d, N);
         }
-        long end = System.currentTimeMillis()/1000;
+        long end = System.currentTimeMillis();
 
-        BigInteger timeSec = BigInteger.valueOf((end-begin));
-        BigInteger avg = BigInteger.valueOf(findBitCount(N)).divide(timeSec);
-        System.out.println("Average Time: " + avg);
+        BigInteger beginBig = BigInteger.valueOf(begin);
+        BigInteger endBig = BigInteger.valueOf(end);
+
+        BigInteger totalTimeMilliSec = endBig.subtract(beginBig);
+        BigInteger totalTimeSec = totalTimeMilliSec.divide(BigInteger.valueOf(1000));
+        float avgTime = totalTimeSec.floatValue() / 1000;
+        float bps = findBitCount(N) / avgTime;
+
+        System.out.println("Average bps = " + bps);
+        System.out.println("Average kbps = " + bps / 1000);
 
         String decryptedM_hex = decryptedM.toString(16);
         // When the message (m = 3) is decrypted, the result is printed
         System.out.println("Decrypted Message(3) = 0x" + decryptedM_hex);
         System.out.println();
+
+
     }
 
     public static void main (String[] args) {
